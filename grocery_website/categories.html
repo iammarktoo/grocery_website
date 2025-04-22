@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catagories - Mark's Grocery Store</title>
+    <link rel="stylesheet" href="css/categories.css">
+ </head>
+ <body>
+    <header>
+        <h1>Mark's Grocery Store</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="order.html">Orders</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Shop By Category</h2>
+        <div class="categories">
+            <div class="category" onclick="toggleSubcategories(this)">
+                <img src="images/vegetables.jpg" alt="Vegetables">
+                <p>Vegetables</p>
+                <div class="subcategories">
+                    <p onclick="goToProducts(1)">Leafy Greens</p>
+                    <p onclick="goToProducts(2)">Root Vegetables</p>
+                    <p onclick="goToProducts(3)">Cruciferous Vegetables</p>
+                </div>
+            </div>
+            <div class="category" onclick="toggleSubcategories(this)">
+                <img src="images/fruits.jpg" alt="Fruits">
+                <p>Fruits</p>
+                <div class="subcategories">
+                    <p onclick="goToProducts(4)">Citrus</p>
+                    <p onclick="goToProducts(5)">Berries</p>
+                    <p onclick="goToProducts(6)">Tropical</p>
+                    <p onclick="goToProducts(13)">Tree Fruits</p>
+                </div>
+            </div>
+            <div class="category" onclick="toggleSubcategories(this)">
+                <img src="images/dairy.jpg" alt="Dairy">
+                <p>Dairy</p>
+                <div class="subcategories">
+                    <p onclick="goToProducts(7)">Milk</p>
+                    <p onclick="goToProducts(8)">Cheese</p>
+                    <p onclick="goToProducts(9)">Yogurt</p>
+                    <p onclick="goToProducts(14)">Eggs</p>
+                </div>
+            </div>
+            <div class="category" onclick="toggleSubcategories(this)">
+                <img src="images/beverages.jpg" alt="Beverages">
+                <p>Beverages</p>
+                <div class="subcategories">
+                    <p onclick="goToProducts(10)">Soft Drinks</p>
+                    <p onclick="goToProducts(11)">Juices</p>
+                    <p onclick="goToProducts(12)">Tea & Coffee</p>
+                </div>
+            </div>
+        </div>
+        <!-- Button to view all products -->
+    <div class="view-all-products">
+        <button onclick="goToProducts('all')">View All Products</button>
+    </div>
+    </main>
+    <!--Footer-->
+    <footer>
+        <p>&copy; 2025 Mark's Grocery Store. All rights reserved.</p>
+    </footer>
+
+    <script src="js/categories.js"></script>
+ </body>
+ </html>

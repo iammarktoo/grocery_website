@@ -1,0 +1,107 @@
+body {
+    font-family: Arial, sans-serif;  
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the page takes the full height of the viewport */
+    margin: 0;
+}
+header{
+    background-color: green;
+    padding: 15px;
+    text-align: center;
+    color: white;
+}
+nav ul{
+    list-style: none;
+    padding: 0;
+    margin: 15px;
+    display: flex; 
+    justify-content: space-around;
+    align-items: center;
+}
+nav ul li{
+    margin: 0 15px;
+}
+nav ul li a{
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px;
+}
+nav ul li a:hover{
+    background: orange;
+    border-radius: 5px;
+}
+main{
+    text-align: center;
+    padding: 20px;
+    flex: 1;
+}
+.categories{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.category{
+    width: 200px;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+.category:hover{
+    transform: scale(1.05);
+}
+.category img{
+    width: 100%;
+    height: 150px;
+    border-radius:5px;
+}
+.category p{
+    font-size: 18px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+.btn{
+    background: orange;
+    color: white;
+    padding: 10px 20px;
+    display: inline-block;
+    text-decoration: none;
+}
+footer {
+    text-align: center;
+    background-color: green;
+    color: white;
+    padding: 15px;
+}
+
+.subcategories {
+    display: none; /* Hide subcategories by default */
+    margin-top: 10px;
+    padding-left: 20px;
+    font-size: 0.9em;
+    color: #555;
+}
+.view-all-products {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.view-all-products button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.category.active .subcategories {
+    display: block; /* Show subcategories when the category has the 'active' class */
+}

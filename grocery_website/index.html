@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mark's Grocery Store</title>
+    <link rel="stylesheet" href="css/index.css"> <!--Link to css-->
+</head>
+<body>
+    <!--Navigation Bar-->
+    <header>
+        <h1> Mark's Grocery Store</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="order.html">Orders</a></li>
+            </ul>
+            <button id="loginBtn">Login</button>
+            <button onclick="logout()">Logout</button>
+
+        </nav>
+    </header>
+    <main>
+        <!--Hero Section--->
+        <section class="hero">
+            <h2>Fresh Groceries Delivered to Your Doorstep</h2>
+            <p>Shop from a wide range of fresh and organic products.</p>
+            <a href="categories.html" class="btn">Shop Now</a>
+        </section>
+
+    <!--Search Bar-->
+        <section class="search">
+            <input type="text" id="searchBox" placeholder="Search for products...">
+            <button id="searchBtn">Search</button>
+        </section>
+
+    <!-- Login Modal -->
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <span id="closeLoginModal" class="close">&times;</span>
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="loginEmail">Email:</label>
+            <input type="email" id="loginEmail" name="email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <button id="openSignup">Sign Up</button></p>    
+    </div>
+</div>
+<!-- Sign Up Modal -->
+<div id="signupModal" class="modal">
+    <div class="modal-content">
+        <span id="closeSignupModal" class="close">&times;</span>
+        <h2>Sign Up</h2>
+        <form id="signupForm">
+            <label for="signupFullName">Full Name:</label>
+            <input type="text" id="signupFullName" name="fullName" required>
+
+            <label for="signupEmail">Email:</label>
+            <input type="email" id="signupEmail" name="email" required>
+
+            <label for="signupPassword">Password:</label>
+            <input type="password" id="signupPassword" name="password" required>
+
+            <label for="signupPhoneNum">Phone Number:</label>
+            <input type="text" id="signupPhoneNum" name="phoneNum" required>
+
+            <label for="signupAddress">Address:</label>
+            <input type="text" id="signupAddress" name="address" required>
+
+            <button type="submit">Create Account</button>
+        </form>
+    </div>
+</div>
+    </main>
+
+    <!--Footer-->
+    <footer>
+        <p>&copy; 2025 Mark's Grocery Store. All rights reserved.</p>
+    </footer>
+
+    <script src="js/login.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Elements for login
+            const loginModal = document.getElementById("loginModal");
+            const loginBtn = document.getElementById("loginBtn");
+            const closeLoginModal = document.getElementById("closeLoginModal");
+            // Elements for search bar
+            const searchBox = document.getElementById("searchBox");
+            const searchBtn = document.getElementById("searchBtn");
+            // Elements for signup
+            const openSignup = document.getElementById("openSignup");
+            const signupModal = document.getElementById("signupModal");
+            const closeSignupModal = document.getElementById("closeSignupModal");
+            const signupForm = document.getElementById("signupForm");
+        
+            function goToSearchPage() {
+                const query = encodeURIComponent(searchBox.value.trim());
+                if (query !== "") {
+                    window.location.href = `products.html?search=${query}`;
+                }
+            }
+        
+            searchBtn.addEventListener("click", goToSearchPage);
+            searchBox.addEventListener("keypress", (e) => {
+                if (e.key === "Enter") goToSearchPage();
+            });
+        
+            if (!sessionStorage.getItem("userID")) {
+                loginModal.style.display = "block";
+            }
+        
+            loginBtn.addEventListener("click", () => {
+                if (sessionStorage.getItem("userID")) {
+                    alert("You are already logged in.");
+                } else {
+                    loginModal.style.display = "block";
+                }
+            });
+            closeLoginModal.addEventListener("click", () => loginModal.style.display = "none");
+        
+            openSignup.addEventListener("click", () => {
+                loginModal.style.display = "none";
+                signupModal.style.display = "block";
+            });
+        
+            closeSignupModal.addEventListener("click", () => signupModal.style.display = "none");
+        
+            window.addEventListener("click", (e) => {
+                if (e.target === loginModal) loginModal.style.display = "none";
+                if (e.target === signupModal) signupModal.style.display = "none";
+            });
+        
+            signupForm.addEventListener("submit", async (e) => {
+                e.preventDefault();
+        
+                const newUser = {
+                    fullName: signupForm.fullName.value,
+                    email: signupForm.email.value,
+                    password: signupForm.password.value,
+                    phoneNum: signupForm.phoneNum.value,
+                    address: signupForm.address.value
+                };
+        
+                const response = await fetch("signup.php", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(newUser)
+                });
+        
+                const result = await response.json();
+        
+                if (result.success) {
+                    alert("Account created successfully! Please log in.");
+                    signupModal.style.display = "none";
+                    loginModal.style.display = "block";
+                } else {
+                    alert(`Error: ${result.error}`);
+                }
+            });
+        });
+    </script>
+    <script>
+        function logout() {
+            sessionStorage.removeItem("userID"); // or localStorage.removeItem("currentUser")
+            location.reload(); // or window.location.href = 'index.html';
+        }
+    </script>
+
+</body>
+</html>

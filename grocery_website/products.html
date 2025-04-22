@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Listing | Mark's Grocery Store</title>
+    <link rel="stylesheet" href="css/products.css">
+</head>
+<body>
+    <header>
+        <h1>Mark's Grocery Store</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="order.html">Orders</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Our Products</h2>
+        <!--category filter-->
+        <label for="category-filter">Filter by Subcategory</label>
+        <select id="category-filter">
+            <option value="all">all</option>
+            <option value="1">Leafy Vegetables</option>
+            <option value="2">Root Vegetables</option>
+            <option value="3">Cruciferous Vegetables</option>
+            <option value="4">Citrus</option>
+            <option value="5">Berries</option>
+            <option value="6">Tropical Fruits</option>
+            <option value="13">Tree Fruits</option>
+            <option value="7">Milk</option>
+            <option value="8">Cheese</option>
+            <option value="9">Yogurt & Cream</option>
+            <option value="14">Eggs</option>
+            <option value="10">Soft Drinks</option>
+            <option value="11">Juices</option>
+            <option value="12">Tea & Coffee</option>
+        </select>
+        <!--Product Grid-->
+        <div class="product-grid" id="product-list">
+            <!--Products will be added here dynamically-->
+        </div>
+
+    </main>
+    <footer>
+        <p>&copy; 2025 Mark's Grocery Store. All rights reserved.</p>
+    </footer>
+    <script src="js/products.js"></script>
+    
+</body>
+</html>

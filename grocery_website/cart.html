@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mark's Grocery Store</title>
+    <link rel="stylesheet" href="css/cart.css"> <!--Link to css-->
+</head>
+<body>
+    <!--Navigation Bar-->
+    <header>
+        <h1> Mark's Grocery Store</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="order.html">Orders</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Your Cart</h2>
+        <!-- Ensure these IDs match the ones in the JavaScript -->
+        <div id="cart-items"></div>
+        <div id="cart-total"></div>
+        <button id="checkoutBtn">Proceed to Checkout</button>
+        <div id="checkoutModal" class = "modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Checkout</h2>
+                <div id="checkout-summary"></div>
+                <form id="checkoutForm">
+                    <h3>Shipping Details</h3>
+                    <input type="text" name="name" placeholder="Full Name" required/>
+                    <input type="text" name="address" placeholder="Address" required/>
+                    <input type="email" name="email" placeholder="Email" required/>
+
+                    <h3>Payment Details</h3>
+                    <select name="paymentMethod" required>
+                        <option value="" disabled selected>Select Payment Method</option>
+                        <option value="credit-card">Credit Card</option>
+                        <option value="paypal">PayPal</option>
+                    </select>
+
+                    <button id="placeOrderBtn">Place Order</button>
+                    </form>
+            </div>
+        </div>
+    <script src="js/cart.js"></script>    
+    </main>
+</body>
+
+
+ <!--Footer-->
+ <footer>
+    <p>&copy; 2025 Mark's Grocery Store. All rights reserved.</p>
+</footer>
+</html>

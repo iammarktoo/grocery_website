@@ -1,0 +1,20 @@
+Array
+(
+    [userID] => 1
+    [totalPrice] => 4
+    [cartItems] => Array
+        (
+            [0] => Array
+                (
+                    [productID] => 4
+                    [quantity] => 1
+                    [price] => 4
+                )
+
+        )
+
+    [name] => Mark Lee
+    [address] => 805/5 Waterways St
+    [email] => marklee8941@gmail.com
+    [paymentMethod] => credit-card
+)
